@@ -7,11 +7,9 @@ defmodule Words do
   @spec count(String.t) :: map
   def count(sentence) do
     sentence
-    |> String.downcase
-    |> String.split([" ", "-", "_"])
-    |> List.foldl(%{}, fn (elem, acc) -> 
-        Map.put(acc, elem, Map.get(acc, elem, 0) + 1)
-       end)
-    |> IO.inspect
+    |> String.split(~r/[^\w-]+|_+|\s+/u, trim: true)
+    |> List.foldl(%{}, fn (key, map) ->
+      Map.update(map, String.downcase(key), 1, &(&1 + 1))
+      end)
   end
 end
