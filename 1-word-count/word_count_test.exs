@@ -1,5 +1,6 @@
 if !System.get_env("EXERCISM_TEST_EXAMPLES") do
-  Code.load_file("word_count.exs")
+  # Code.load_file("word_count.exs")
+  Code.load_file("bear_su_word_count.exs")
 end
 
 ExUnit.start
